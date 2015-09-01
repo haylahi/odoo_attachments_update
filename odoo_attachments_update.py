@@ -50,7 +50,7 @@ def add_options(parser):
 
 
 def migrate_attachment(sock, args, uid, att_id):
-    att = sock.execute(args.dbname, uid, args.pwd, 'ir.attachment', 'read', att_id, ['datas'])
+    att = sock.execute(args.dbname, uid, args.pwd, 'ir.attachment', 'read', [att_id], ['datas'])
     datas = att and att[0] and att[0]['datas'] or False
     datas and sock.execute(args.dbname, uid, args.pwd, 'ir.attachment', 'write', [att_id], {'datas': datas})
 
